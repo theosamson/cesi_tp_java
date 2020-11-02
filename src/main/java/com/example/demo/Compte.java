@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Compte {
@@ -14,6 +13,11 @@ public class Compte {
     private Integer numero;
 
     private Integer amount;
+
+    @OneToOne(mappedBy = "compte")
+    @JsonIgnore
+    private User user;
+
 
     public Integer getId() {
         return id;
@@ -37,5 +41,13 @@ public class Compte {
 
     public void setAmount(Integer amount) {
         this.amount = amount;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

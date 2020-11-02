@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class User {
@@ -14,6 +11,10 @@ public class User {
     private String name;
 
     private String email;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "compte_id", referencedColumnName = "id")
+    private Compte compte;
 
     public Integer getId() {
         return id;
@@ -42,5 +43,13 @@ public class User {
     @Override
     public String toString() {
         return  name + " " +  email ;
+    }
+
+    public Compte getCompte() {
+        return compte;
+    }
+
+    public void setCompte(Compte compte) {
+        this.compte = compte;
     }
 }
