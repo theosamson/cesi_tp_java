@@ -6,14 +6,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class User {
+public class Compte {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
 
-    private String name;
+    private Integer numero;
 
-    private String email;
+    private Integer amount;
 
     public Integer getId() {
         return id;
@@ -23,24 +23,19 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNumero(Integer numero) {
+        this.numero = numero;
     }
 
-    public String getEmail() {
-        return email;
+    public Integer getAmount() {
+        return amount;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    @Override
-    public String toString() {
-        return  name + " " +  email ;
+    public void setAmount(Integer amount) {
+        this.amount = amount;
     }
 }
