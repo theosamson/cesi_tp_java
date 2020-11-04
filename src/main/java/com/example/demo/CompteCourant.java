@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Compte {
+public class CompteCourant {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer id;
@@ -14,11 +14,12 @@ public class Compte {
 
     private Integer amount;
 
-    @OneToOne(mappedBy = "compte")
+    @OneToOne(mappedBy = "compteCourant")
     @JsonIgnore
     private User user;
 
 
+    //<editor-fold desc="getterSetter">
     public Integer getId() {
         return id;
     }
@@ -50,4 +51,5 @@ public class Compte {
     public void setUser(User user) {
         this.user = user;
     }
+    //</editor-fold>
 }

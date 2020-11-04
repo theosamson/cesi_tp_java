@@ -9,27 +9,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller // This means that this class is a Controller
-@RequestMapping(path="/compte") // This means URL's start with /demo (after Application path)
-public class CompteController {
+@RequestMapping(path="/compteCourant") // This means URL's start with /demo (after Application path)
+public class CompteCourantController {
     @Autowired
-    private CompteRepository compteRepository;
+    private CompteCourantRepository compteCourantRepository;
 
-    @PostMapping(path="/addCompte") // Map ONLY POST Requests
+    @PostMapping(path="/add") // Map ONLY POST Requests
     public @ResponseBody String addNewCompte (@RequestParam Integer numero
             , @RequestParam Integer amount) {
         // @ResponseBody means the returned String is the response, not a view name
         // @RequestParam means it is a parameter from the GET or POST request
 
-        Compte j = new Compte();
+        CompteCourant j = new CompteCourant();
         j.setNumero(numero);
         j.setAmount(amount);
-        compteRepository.save(j);
+        compteCourantRepository.save(j);
         return "Saved compte";
     }
 
-    @GetMapping(path="/allCompte")
-    public @ResponseBody Iterable<Compte> getAllCompte() {
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<CompteCourant> getAllCompte() {
         // This returns a JSON or XML with the users
-        return compteRepository.findAll();
+        return compteCourantRepository.findAll();
     }
 }

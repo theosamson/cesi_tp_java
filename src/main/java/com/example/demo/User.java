@@ -13,8 +13,8 @@ public class User {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "compte_id", referencedColumnName = "id")
-    private Compte compte;
+    @JoinColumn(name = "compteCourant", referencedColumnName = "id")
+    private CompteCourant compteCourant;
 
     public Integer getId() {
         return id;
@@ -45,11 +45,11 @@ public class User {
         return  name + " " +  email ;
     }
 
-    public Compte getCompte() {
-        return compte;
+    public CompteCourant getCompte() {
+        return compteCourant;
     }
 
-    public void setCompte(Compte compte) {
-        this.compte = compte;
+    public void setCompte(CompteCourant compteCourant) {
+        this.compteCourant = compteCourant;
     }
 }
